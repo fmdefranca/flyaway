@@ -1,58 +1,97 @@
 import React from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import {
+  createGlobalStyle
+} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
   }
 `;
 
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
+const Header = styled.header`
+  display: flex;
+  justify-content: space-around;
+
+  height: 100vh;
+  background-color: #70a1ff;
 `;
 
-const Header = styled.header`
-  border: 1px solid red;
+const Logo = styled.div`
+  color: black;
+  flex-grow: 1;
+
+  img {
+    height: 80px;
+  }
+
 `;
 
 const Nav = styled.nav`
-  background-color: red;
-  min-height: 50px;
+  padding-bottom: 10px;
+  flex-grow: 1;
+  padding: 5px 20px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+
+    li {
+      text-align: center;
+      margin: 15px auto;
+
+      a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+
+  }
+
 `;
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
+// const Wrapper = styled.section`
+//   padding: 4em;
+//   background-image: url('img/wrapper_back.jpg');
+//   background-size: cover;
+//   height: 100vh;
+// `;
 
-const Paragraph = styled.p`
-  color: red;
-`;
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Header>
-        <Nav>
-          <ul>
-            <li> Home </li> <li> About </li> <li> Contact </li>
-          </ul>
-        </Nav>
+        <div className="container">
+          <div className="row">
+            <Logo className="one column">
+              <img src="img/drawing.svg" alt="FlyAway Logo"></img>
+            </Logo>
+            <Nav className="eleven columns">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </Nav>
+          </div>
+          <div className="row">
+            Header section
+          </div>
+        </div>
       </Header>
-      <Wrapper>
-        <Title> Hello World! </Title>
-        <Paragraph>
-          This is just loads of scrabble crappy text because lorme ipsum is not
-          working properly. This is not long enough, i need ot add more and more
-          text for this shit to show something a bi tlonger on the page.
-        </Paragraph>
-      </Wrapper>
     </>
   );
 }
